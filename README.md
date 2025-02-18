@@ -1,4 +1,4 @@
-# Extraction d'Informations de Contact depuis un PDF
+# LLM-contacthunter 🏹
 
 ## Description
 Ce projet propose une API permettant d'extraire automatiquement les informations de contact présentes dans un fichier PDF. L'API s'appuie le service GitHub Marketplace, permettant d'accéder à de nombreux modèles de qualité gratuitement.
