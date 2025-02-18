@@ -1,0 +1,26 @@
+body {
+	height: 100vh;
+	font-family: "Space Mono";
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.content {
+	max-width: 800px;
+	max-height: 600px;
+	overflow: auto;
+}
+
+input {
+	font-family: "Space Mono";
+}
+
+button {
+	font-family: "Space Mono";
+}
+
+a {
+	margin: 0 10px;
+	display: inline-block;
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+	<div class="content">
+		<h1>Hello !</h1>
+		<form id="uploadForm" action="/api/analyze" method="post" enctype="multipart/form-data">
+			<label>Please choose a pdf file to upload: </label>
+			<br><br>
+			<input type="file" id="file" name="file" required>
+			<br><br>
+			<button type="submit">Upload</button>
+		</form>
+		<div id="responseContainer" class="response"></div>
+		<br>
+		<a href="index.html" style="margin: 0;">Go Back</a>
+		</div>
+	<script>
+		document.getElementById("uploadForm").addEventListener("submit", async function(event) {
+			event.preventDefault();
+			let formData = new FormData(this);
+			try {
+				let response = await fetch(this.action, {
+					method: this.method,
+					body: formData
+				})
+
+				if (!response.ok) {
+					throw new Error(`HTTP error! Status: ${response.status}`)
+				}
+
+				let data = await response.json();
+				document.getElementById("responseContainer").innerHTML = "";
+				document.getElementById("responseContainer").appendChild(document.createElement("br"));
+				console.log("Received data:", data)
+				for (let key in data) {
+					console.log(`${key}: ${data[key]}`);
+					const elem = document.createElement("li");
+					elem.innerHTML= `<li>${key}: ${data[key]}</li>`;
+					document.getElementById("responseContainer").appendChild(elem);
+				}
+			} catch (error) {
+				document.getElementById("responseContainer").innerHTML = '<p style="color: red;">Error</p>';
+				console.log(error)
+			}
+		});
+	</script>
+</body>
+</html>

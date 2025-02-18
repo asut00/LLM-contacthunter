@@ -1,0 +1,21 @@
+services:
+  backend:
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: fastapi_backend
+    ports:
+      - "8000:8000"
+    restart: always
+    depends_on:
+      - frontend
+
+  frontend:
+    image: nginx:latest
+    container_name: nginx_frontend
+    ports:
+      - "80:80"
+    volumes:
+      - ./frontend:/usr/share/nginx/html
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    restart: always

@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+databases
+sqlalchemy
+pytesseract
+pdf2image
+openai
+nest_asyncio
+python-multipart
+pillow
+aiosqlite
